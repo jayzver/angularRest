@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angularRest"
+    }
+  },
+  "defaultProject": "angularRest",
+  "cli": {
+    "analytics": false
+  }
 }
