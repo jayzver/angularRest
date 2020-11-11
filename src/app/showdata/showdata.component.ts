@@ -8,14 +8,18 @@ import {RestService} from '../rest/rest.service';
 })
 export class ShowdataComponent implements OnInit
 {
-
+  groups = [];
   constructor(private service: RestService)
   {
   }
 
   ngOnInit(): void
   {
-    this.service.getGroups().subscribe((data) => {console.log(data); });
+    this.service.getGroups().subscribe((data: any[]) =>
+    {
+      console.log(data);
+      this.groups = data;
+    });
   }
 
 }
