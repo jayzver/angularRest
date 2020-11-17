@@ -9,6 +9,7 @@ import {RestService} from '../rest/rest.service';
 export class ShowdataComponent implements OnInit
 {
   groups = [];
+  isEnter: boolean;
   constructor(private service: RestService)
   {
   }
@@ -19,6 +20,7 @@ export class ShowdataComponent implements OnInit
     {
       console.log(data);
       this.groups = data;
+      this.isEnter = true;
     });
   }
 
