@@ -13,12 +13,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './component/app.component';
 import { ShowdataComponent } from './showdata/showdata.component';
 import { AboutComponent } from './about/about.component';
+import { HoverDirDirective } from './hoverDIr/hover-dir.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShowdataComponent,
-    AboutComponent
+    AboutComponent,
+    HoverDirDirective
   ],
   imports: [
     BrowserModule,

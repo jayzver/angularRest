@@ -24,4 +24,15 @@ export class ShowdataComponent implements OnInit
     });
   }
 
+  onmouseenter($event: MouseEvent): void
+  {
+    if ($event == null)
+    {
+    }
+  }
+
+  onmouseleave($event: MouseEvent): void
+  {
+
+  }
 }
