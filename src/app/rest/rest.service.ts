@@ -8,8 +8,8 @@ import {Observable} from 'rxjs';
 export class RestService
 {
   private REST_SERVER = 'localhost:9966';
-  private GET_ROOT_GROUP = 'http://localhost:9966/api/groupaggregate/v1/getrootgroup/';
-  private GET_GROUP_BY_ID = 'http://localhost:9966/api/groupaggregate/v1/';
+  private GET_ROOT_GROUPS = 'http://localhost:9966/api/group_aggregate/v1/get_root_groups/';
+  private GET_GROUPS_BY_ID = 'http://localhost:9966/api/group_aggregate/v1/get_groups_by_parent_id/';
   private GET_AGGREGATES_BY_ID: string;
   constructor(private httpClient: HttpClient)
   {
@@ -17,11 +17,12 @@ export class RestService
   // tslint:disable-next-line:typedef
   public getRootGroup()
   {
-    return this.httpClient.get(this.GET_ROOT_GROUP);
+    return this.httpClient.get(this.GET_ROOT_GROUPS);
   }
-  public getGroupById(id: number): Observable<any>
+  // tslint:disable-next-line:typedef
+  public getGroupById(id: number)
   {
-    return this.httpClient.get(this.GET_GROUP_BY_ID + id);
+    return this.httpClient.get(this.GET_GROUPS_BY_ID + id);
   }
   public getAggregatesByParentId(parentId: number): Observable<any>
   {

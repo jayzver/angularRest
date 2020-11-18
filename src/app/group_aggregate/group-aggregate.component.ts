@@ -11,8 +11,6 @@ import {Router} from '@angular/router';
 
 export class GroupAggregateComponent implements OnInit, OnDestroy
 {
-  ROOT_GROUP = 'localhost:9966/api/groupaggregate/v1/rootgroup/';
-  GROUP = 'localhost:9966/api/groupaggregate/v1/';
   private sub: Subscription;
   groups = [];
 
@@ -33,6 +31,7 @@ export class GroupAggregateComponent implements OnInit, OnDestroy
   {
     // if (this.groups[index].hasGroup == 1)
     {
+      console.log(this.groups[index].id);
       this.sub = this.service.getGroupById(this.groups[index].id).subscribe((data: any[]) =>
         {
           console.log(data);

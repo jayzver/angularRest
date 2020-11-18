@@ -4,7 +4,7 @@
   <div class="content">
     <div fxLayout="row wrap" fxLayoutGap="25px grid">
       <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%" *ngFor="let group of groups; let i = index">
-        <a class="linkGroupTitle" href="javascript:void(0)" (click)="onClick($event, i)">
+        <a class="linkGroupTitle" href="javascript:" (click)="onClick($event, i)">
           <mat-card appHoverDir>
             <mat-card-header>
               <span class="groupTitle">{{group.nameGroup}}</span>
