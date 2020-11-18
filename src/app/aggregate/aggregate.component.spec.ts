@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShowdataComponent } from './showdata.component';
+import { AggregateComponent } from './aggregate.component';
 
-describe('ShowdataComponent', () => {
-  let component: ShowdataComponent;
-  let fixture: ComponentFixture<ShowdataComponent>;
+describe('AggregateComponent', () => {
+  let component: AggregateComponent;
+  let fixture: ComponentFixture<AggregateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShowdataComponent ]
+      declarations: [ AggregateComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ShowdataComponent);
+    fixture = TestBed.createComponent(AggregateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

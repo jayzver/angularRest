@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import {AboutComponent} from './about/about.component';
-import {ShowdataComponent} from './showdata/showdata.component';
+import {GroupAggregateComponent} from './groupAggregate/group-aggregate.component';
+import {AggregateComponent} from './aggregate/aggregate.component';
 
 const routes: Routes =
   [
-    {path: 'showdata', component: ShowdataComponent},
-    {path: 'about', component: AboutComponent}
+    {path: 'root_group_aggregate', component: GroupAggregateComponent},
+    {path: 'about', component: AboutComponent},
+    {path: 'aggregates_by_group_id/:id', component: AggregateComponent}
   ];
 
 @NgModule({
