@@ -15,11 +15,6 @@ export class RestService
   {
   }
   // tslint:disable-next-line:typedef
-  public getRootGroup()
-  {
-    return this.httpClient.get(this.GET_ROOT_GROUPS);
-  }
-  // tslint:disable-next-line:typedef
   public getGroupById(id: number)
   {
     return this.httpClient.get(this.GET_GROUPS_BY_ID + id);
