@@ -19,8 +19,8 @@ export class RestService
   {
     return this.httpClient.get(this.GET_GROUPS_BY_ID + id);
   }
-  public getAggregatesByParentId(parentId: number): Observable<any>
+  public getAggregatesByParentId(parentId: number): Observable<object[]>
   {
-    return this.httpClient.get(this.GET_AGGREGATES_BY_ID + parentId);
+    return this.httpClient.get<object[]>(this.GET_AGGREGATES_BY_ID + parentId);
   }
 }
