@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {RestService} from '../rest/rest.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
+import {GroupAggregate} from '../classes/group-aggregate';
 
 @Component({
   selector: 'app-group-aggregate',
@@ -12,7 +13,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class GroupAggregateComponent implements OnInit, OnDestroy
 {
   private sub: Subscription;
-  groups = [];
+  groups: GroupAggregate[] = [];
 
   constructor(private service: RestService, private router: Router, private route: ActivatedRoute)
   {
@@ -24,32 +25,26 @@ export class GroupAggregateComponent implements OnInit, OnDestroy
     {
       let id;
       id = (params.id == null) ? 0 : params.id;
-      this.sub = this.service.getGroupById(id).subscribe((data: any[]) =>
-      {
-        console.log(data);
-        this.groups = data;
-      });
+      this.sub = this.service.getGroupById(id).subscribe((data: GroupAggregate[]) =>
+        {
+          console.log(data);
+          this.groups = data;
+        },
+        error => console.log(error));
     });
   }
 
-  onClick($event: MouseEvent, index: number): void
+  onClick($event: MouseEvent, id: number): void
   {
-    // if (this.groups[index].hasGroup == 1)
+    let group;
+    group = this.groups.find(one => one.id === id);
+    if (group.hasGroup === 1)
     {
-      // console.log(this.groups[index].id);
-      // this.sub = this.service.getGroupById(this.groups[index].id).subscribe((data: any[]) =>
-      //   {
-      //     console.log(data);
-      //     this.groups = null;
-      //     this.groups = data;
-      //   }
-      // );
-      this.router.navigate(['group_aggregate_by_parent_id', this.groups[index].id]);
+      this.router.navigate(['group_aggregate_by_parent_id', id]);
+    } else if (group.hasAggregate === 1)
+    {
+      this.router.navigate(['aggregates_by_group_id', id]);
     }
-    // else
-    // {
-    //   this.router.navigate(['aggregates_by_group_id', this.groups[index].id]);
-    // }
   }
 
   ngOnDestroy(): void
