@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {GroupAggregate} from "../classes/group-aggregate";
+import {GroupAggregate} from '../classes/group-aggregate';
 
 @Injectable({
   providedIn: 'root'
