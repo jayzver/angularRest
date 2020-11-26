@@ -2,6 +2,7 @@
   <mat-spinner *ngIf="groups.length === 0"></mat-spinner>
 
   <div class="content">
+    <h2 fxLayoutAlign="center" >{{titlePage}}</h2>
     <div fxLayout="row wrap" fxLayoutGap="25px grid">
       <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%" *ngFor="let group of groups; let i = index">
         <a class="linkGroupTitle" href="javascript:" (click)="onClick($event, group.id)">

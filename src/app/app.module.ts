@@ -11,10 +11,11 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './component/app.component';
-import { GroupAggregateComponent } from './group_aggregate/group-aggregate.component';
+import { GroupAggregateComponent} from './group_aggregate/group-aggregate.component';
 import { AboutComponent } from './about/about.component';
 import { HoverDirDirective } from './hoverDIr/hover-dir.directive';
 import { AggregateComponent } from './aggregate/aggregate.component';
+import { CreateGroupAggregateComponent } from './create-group-aggregate/create-group-aggregate.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AggregateComponent } from './aggregate/aggregate.component';
     GroupAggregateComponent,
     AboutComponent,
     HoverDirDirective,
-    AggregateComponent
+    AggregateComponent,
+    CreateGroupAggregateComponent
   ],
   imports: [
     BrowserModule,

@@ -9,13 +9,12 @@ import {GroupAggregate} from '../classes/group-aggregate';
 export class RestService
 {
   private REST_SERVER = 'localhost:9966';
-  private GET_ROOT_GROUPS = 'http://localhost:9966/api/v1/group_aggregate/get_root_groups/';
   private GET_GROUPS_BY_ID = 'http://localhost:9966/api/v1/group_aggregate/get_groups_by_parent_id/';
   private GET_AGGREGATES_BY_ID: string;
   constructor(private httpClient: HttpClient)
   {
   }
-  public getGroupById(id: number): Observable<GroupAggregate[]>
+  public getGroupsByParentId(id: number): Observable<GroupAggregate[]>
   {
     return this.httpClient.get<GroupAggregate[]>(`${this.GET_GROUPS_BY_ID}${id}`);
   }

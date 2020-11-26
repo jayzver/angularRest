@@ -14,6 +14,7 @@ export class GroupAggregateComponent implements OnInit, OnDestroy
 {
   private sub: Subscription;
   groups: GroupAggregate[] = [];
+  titlePage: string;
 
   constructor(private service: RestService, private router: Router, private route: ActivatedRoute)
   {
@@ -25,7 +26,8 @@ export class GroupAggregateComponent implements OnInit, OnDestroy
     {
       let id;
       id = (params.id == null) ? 0 : params.id;
-      this.sub = this.service.getGroupById(id).subscribe((data: GroupAggregate[]) =>
+      this.titlePage = (params.name == null) ? 'Главная' : params.name;
+      this.sub = this.service.getGroupsByParentId(id).subscribe((data: GroupAggregate[]) =>
         {
           console.log(data);
           this.groups = data;
@@ -40,7 +42,7 @@ export class GroupAggregateComponent implements OnInit, OnDestroy
     group = this.groups.find(one => one.id === id);
     if (group.hasGroup === 1)
     {
-      this.router.navigate(['group_aggregate_by_parent_id', id]);
+      this.router.navigate(['group_aggregate_by_parent_id', id, group.nameGroup]);
     } else if (group.hasAggregate === 1)
     {
       this.router.navigate(['aggregates_by_group_id', id]);
