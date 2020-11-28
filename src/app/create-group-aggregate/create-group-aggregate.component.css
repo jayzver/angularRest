@@ -1,0 +1,36 @@
+div.create_group_form
+{
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*max-width: 500px;*/
+  border: 2px solid rgba(136, 136, 136, 0.5);
+  /*border-color: ;*/
+  border-radius: 15px;
+  margin-top: 30px;
+  font-size: 1.2rem;
+  padding: 20px;
+
+}
+mat-radio-group.create_group_form_rbg
+{
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+mat-radio-button.create_group_form_rb
+{
+  margin: 5px;
+}
+button.create_group_form_bb
+{
+  margin-left: 80px;
+  margin-bottom: 30px;
+}
+div.create_group_form_bs
+{
+  width: 100%;
+}
+button.create_group_form_bs
+{
+  margin-left: 20px;
+}

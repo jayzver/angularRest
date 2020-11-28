@@ -8,6 +8,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from "@angular/material/input";
+import {MatRadioModule} from "@angular/material/radio";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './component/app.component';
@@ -16,6 +19,7 @@ import { AboutComponent } from './about/about.component';
 import { HoverDirDirective } from './hoverDIr/hover-dir.directive';
 import { AggregateComponent } from './aggregate/aggregate.component';
 import { CreateGroupAggregateComponent } from './create-group-aggregate/create-group-aggregate.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -36,7 +40,11 @@ import { CreateGroupAggregateComponent } from './create-group-aggregate/create-g
     MatButtonModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

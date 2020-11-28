@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-group-aggregate.component.css']
 })
 export class CreateGroupAggregateComponent implements OnInit {
+  groupContent: string;
+  nameHint: string;
 
   constructor() { }
 
