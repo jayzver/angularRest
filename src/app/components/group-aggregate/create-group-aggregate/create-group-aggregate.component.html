@@ -3,7 +3,7 @@
      fxFlexOffset="10%" fxFlexOffset.sm="3%" fxFlexOffset.xs="1%">
   <mat-form-field appearance="outline" class="create_group_form_name">
     <mat-label>Название</mat-label>
-    <input matInput placeholder="название">
+    <input [(ngModel)]="group.nameGroup" matInput placeholder="название">
     <mat-hint>{{nameHint}}</mat-hint>
   </mat-form-field>
   <label style="size: 3em;" id="group_content">Содержимое группы</label>
