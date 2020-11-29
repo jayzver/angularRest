@@ -11,24 +11,24 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from "@angular/material/input";
 import {MatRadioModule} from "@angular/material/radio";
+import {FormsModule} from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './component/app.component';
-import { GroupAggregateComponent} from './group_aggregate/group-aggregate.component';
-import { AboutComponent } from './about/about.component';
-import { HoverDirDirective } from './hoverDIr/hover-dir.directive';
-import { AggregateComponent } from './aggregate/aggregate.component';
-import { CreateGroupAggregateComponent } from './create-group-aggregate/create-group-aggregate.component';
-import {FormsModule} from "@angular/forms";
+import { AppComponent } from './components/component/app.component';
+import { GroupAggregateViewComponent} from './components/group-aggregate/group-aggregate-view/group-aggregate-view.component';
+import { AboutComponent } from './components/about/about.component';
+import { HoverDirective } from './directives/hover/hover.directive';
+import { CreateGroupAggregateComponent } from './components/group-aggregate/create-group-aggregate/create-group-aggregate.component';
+import { AggregateViewComponent } from './components/aggregate/aggregate-view/aggregate-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GroupAggregateComponent,
+    GroupAggregateViewComponent,
     AboutComponent,
-    HoverDirDirective,
-    AggregateComponent,
-    CreateGroupAggregateComponent
+    HoverDirective,
+    CreateGroupAggregateComponent,
+    AggregateViewComponent
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GroupAggregateComponent } from './group-aggregate.component';
+import { GroupAggregateViewComponent } from './group-aggregate-view.component';
 
 describe('ShowdataComponent', () => {
-  let component: GroupAggregateComponent;
-  let fixture: ComponentFixture<GroupAggregateComponent>;
+  let component: GroupAggregateViewComponent;
+  let fixture: ComponentFixture<GroupAggregateViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GroupAggregateComponent ]
+      declarations: [ GroupAggregateViewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GroupAggregateComponent);
+    fixture = TestBed.createComponent(GroupAggregateViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

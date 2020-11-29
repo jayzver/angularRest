@@ -1,22 +1,22 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {RestService} from '../rest/rest.service';
+import {GroupAggregateService} from '../../../services/group-aggregate-service/group-aggregate.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
-import {GroupAggregate} from '../classes/group-aggregate';
+import {GroupAggregate} from '../../../classes/group-aggregate';
 
 @Component({
   selector: 'app-group-aggregate',
-  templateUrl: './groupaggregate.component.html',
-  styleUrls: ['./groupaggregate.component.css']
+  templateUrl: './group-aggregate-view.component.html',
+  styleUrls: ['./group-aggregate-view.component.css']
 })
 
-export class GroupAggregateComponent implements OnInit, OnDestroy
+export class GroupAggregateViewComponent implements OnInit, OnDestroy
 {
   private sub: Subscription;
   groups: GroupAggregate[] = [];
   titlePage: string;
 
-  constructor(private service: RestService, private router: Router, private route: ActivatedRoute)
+  constructor(private service: GroupAggregateService, private router: Router, private route: ActivatedRoute)
   {
   }
 

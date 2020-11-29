@@ -3,7 +3,7 @@ import {Directive, ElementRef, HostListener, OnInit, Renderer2} from '@angular/c
 @Directive({
   selector: '[appHoverDir]'
 })
-export class HoverDirDirective implements OnInit
+export class HoverDirective implements OnInit
 {
   private hoverClass: string;
   private leaveClass: string;

@@ -1,11 +1,11 @@
 
 <div class="create_group_form" fxFlex="30%" fxFlex.md="40%" fxFlex.sm="60%"  fxFlex.xs="100%"
      fxFlexOffset="10%" fxFlexOffset.sm="3%" fxFlexOffset.xs="1%">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="create_group_form_name">
     <mat-label>Название</mat-label>
     <input matInput placeholder="название">
     <mat-hint>{{nameHint}}</mat-hint>
-  </mat-form-field><br>
+  </mat-form-field>
   <label style="size: 3em;" id="group_content">Содержимое группы</label>
   <mat-radio-group aria-labelledby="group_content" class="create_group_form_rbg" [(ngModel)]="groupContent">
     <mat-radio-button class="create_group_form_rb" value="groups">Группы</mat-radio-button>

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AggregateComponent } from './aggregate.component';
+import { AggregateViewComponent } from './aggregate-view.component';
 
-describe('AggregateComponent', () => {
-  let component: AggregateComponent;
-  let fixture: ComponentFixture<AggregateComponent>;
+describe('AggregateViewComponent', () => {
+  let component: AggregateViewComponent;
+  let fixture: ComponentFixture<AggregateViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AggregateComponent ]
+      declarations: [ AggregateViewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AggregateComponent);
+    fixture = TestBed.createComponent(AggregateViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

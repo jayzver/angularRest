@@ -9,13 +9,17 @@ div.create_group_form
   margin-top: 30px;
   font-size: 1.2rem;
   padding: 20px;
-
+}
+mat-form-field.create_group_form_name
+{
+  display: block;
+  margin-bottom: 25px;
 }
 mat-radio-group.create_group_form_rbg
 {
   display: flex;
   flex-direction: column;
-  margin: 15px 0;
+  margin-bottom: 25px;
 }
 mat-radio-button.create_group_form_rb
 {
