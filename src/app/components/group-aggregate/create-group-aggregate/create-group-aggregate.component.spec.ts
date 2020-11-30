@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateGroupAggregateComponent } from './create-group-aggregate.component';
 
-describe('CreateGroupComponent', () => {
+describe('CreateGroupAggregateComponent', () => {
   let component: CreateGroupAggregateComponent;
   let fixture: ComponentFixture<CreateGroupAggregateComponent>;
 

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GroupAggregateViewComponent } from './group-aggregate-view.component';
 
-describe('ShowdataComponent', () => {
+describe('GroupAggregateViewComponent', () => {
   let component: GroupAggregateViewComponent;
   let fixture: ComponentFixture<GroupAggregateViewComponent>;
 

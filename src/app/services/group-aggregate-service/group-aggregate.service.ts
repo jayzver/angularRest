@@ -19,6 +19,7 @@ export class GroupAggregateService
   }
   public saveGroupAggregate(group: GroupAggregate): Observable<GroupAggregate>
   {
+    const formData = new FormData();
     return this.httpClient.post<GroupAggregate>(`${this.REST_SERVER}`, group);
   }
 }

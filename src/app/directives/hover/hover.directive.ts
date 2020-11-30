@@ -16,7 +16,6 @@ export class HoverDirective implements OnInit
 
   constructor(private element: ElementRef, private renderer: Renderer2)
   {
-
   }
 
   @HostListener('mouseenter')
