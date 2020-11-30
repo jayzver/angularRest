@@ -4,6 +4,5 @@ export class GroupAggregate
   nameGroup: string;
   imageUrl: string;
   parentId: number;
-  hasGroup: number;
-  hasAggregate: number;
+  typeOfChildren: number;
 }

@@ -12,6 +12,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from "@angular/material/input";
 import {MatRadioModule} from "@angular/material/radio";
 import {FormsModule} from "@angular/forms";
+import {MaterialFileInputModule} from 'ngx-material-file-input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/component/app.component';
@@ -44,7 +45,8 @@ import { AggregateViewComponent } from './components/aggregate/aggregate-view/ag
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
-    FormsModule
+    FormsModule,
+    MaterialFileInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

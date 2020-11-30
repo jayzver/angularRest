@@ -1,4 +1,4 @@
-div.create_group_form
+div.form
 {
   /*display: flex;*/
   /*flex-direction: column;*/
@@ -7,34 +7,34 @@ div.create_group_form
   /*border-color: ;*/
   border-radius: 15px;
   margin-top: 30px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 20px;
 }
-mat-form-field.create_group_form_name
+mat-form-field.name
 {
   display: block;
   margin-bottom: 25px;
 }
-mat-radio-group.create_group_form_rbg
+mat-radio-group.rbg
 {
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
 }
-mat-radio-button.create_group_form_rb
+mat-radio-button.rb
 {
   margin: 5px;
 }
-button.create_group_form_bb
+button.button_choose_file
 {
   margin-left: 80px;
   margin-bottom: 30px;
 }
-div.create_group_form_bs
+div.controls
 {
   width: 100%;
 }
-button.create_group_form_bs
+button.button_controls
 {
   margin-left: 20px;
 }

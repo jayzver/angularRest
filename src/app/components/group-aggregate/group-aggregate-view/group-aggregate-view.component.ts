@@ -40,10 +40,11 @@ export class GroupAggregateViewComponent implements OnInit, OnDestroy
   {
     let group;
     group = this.groups.find(one => one.id === id);
-    if (group.hasGroup === 1)
+    console.log(group.nameGroup);
+    if (group.typeOfChildren === 1)
     {
       this.router.navigate(['group_aggregate_by_parent_id', id, group.nameGroup]);
-    } else if (group.hasAggregate === 1)
+    } else if (group.typeOfChildren === 2)
     {
       this.router.navigate(['aggregates_by_group_id', id]);
     }

@@ -10,7 +10,6 @@ export class GroupAggregateService
 {
   private REST_SERVER = 'http://localhost:9966/api/v1/group_aggregate/';
   private GET_GROUPS_BY_ID = 'get_groups_by_parent_id/';
-  private SAVE_GROUP = 'save_group_aggregate/';
   constructor(private httpClient: HttpClient)
   {
   }
@@ -20,6 +19,6 @@ export class GroupAggregateService
   }
   public saveGroupAggregate(group: GroupAggregate): Observable<GroupAggregate>
   {
-    return this.httpClient.post<GroupAggregate>(`${this.REST_SERVER}${this.SAVE_GROUP}`, group);
+    return this.httpClient.post<GroupAggregate>(`${this.REST_SERVER}`, group);
   }
 }
