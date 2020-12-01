@@ -17,9 +17,12 @@ export class GroupAggregateService
   {
     return this.httpClient.get<GroupAggregate[]>(`${this.REST_SERVER}${this.GET_GROUPS_BY_ID}${id}`);
   }
-  public saveGroupAggregate(group: GroupAggregate): Observable<GroupAggregate>
+  public saveGroupAggregate(group: GroupAggregate, file: File): Observable<GroupAggregate>
   {
     const formData = new FormData();
-    return this.httpClient.post<GroupAggregate>(`${this.REST_SERVER}`, group);
+    // formData.append('groupAggregate', JSON.stringify(group));
+    formData.append('fille', file);
+    return this.httpClient.post<GroupAggregate>(`${this.REST_SERVER}${'/fille'}`, formData);
+    // return this.httpClient.post<GroupAggregate>(`${this.REST_SERVER}`, group);
   }
 }

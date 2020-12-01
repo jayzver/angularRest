@@ -10,7 +10,7 @@
     <mat-radio-button class="rb" [value]="2">Агрегаты</mat-radio-button>
   </mat-radio-group>
   <mat-form-field>
-    <ngx-mat-file-input [(ngModel)]="fileInput"
+    <ngx-mat-file-input
       placeholder="Выберите изображение" [accept]="'.jpg, .jpeg, .png'" (input)="inputFile($event)">
     </ngx-mat-file-input>
     <mat-icon matSuffix>folder</mat-icon>

@@ -12,7 +12,7 @@ export class CreateGroupAggregateComponent implements OnInit
 {
   group: GroupAggregate = new GroupAggregate();
   nameHint: string;
-  fileInput: FileInput;
+  file: File;
   validator;
 
   constructor(private service: GroupAggregateService)
@@ -26,15 +26,14 @@ export class CreateGroupAggregateComponent implements OnInit
 
   cancel(): void
   {
-    this.group.imageUrl = this.fileInput.files[0].name;
-    console.log(this.group);
+    // console.log(this.group);
   }
 
   send(isValid: boolean): void
   {
     if (isValid)
     {
-      this.service.saveGroupAggregate(this.group).subscribe(data =>
+      this.service.saveGroupAggregate(this.group, this.file).subscribe(data =>
       {console.log(data); });
     }
   }
@@ -42,6 +41,7 @@ export class CreateGroupAggregateComponent implements OnInit
   inputFile(event): void
   {
     // console.log(event.target.files[0].name);
-    this.group.imageUrl = event.target.files[0].name;
+    this.file = event.ratget.files[0];
+    this.group.imageUrl = this.file.name;
   }
 }
