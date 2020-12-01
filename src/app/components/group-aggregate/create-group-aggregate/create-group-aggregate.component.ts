@@ -41,7 +41,7 @@ export class CreateGroupAggregateComponent implements OnInit
   inputFile(event): void
   {
     // console.log(event.target.files[0].name);
-    this.file = event.ratget.files[0];
+    this.file = event.target.files[0];
     this.group.imageUrl = this.file.name;
   }
 }

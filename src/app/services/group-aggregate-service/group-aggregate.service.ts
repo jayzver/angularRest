@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {GroupAggregate} from '../../classes/group-aggregate';
 
@@ -17,12 +17,12 @@ export class GroupAggregateService
   {
     return this.httpClient.get<GroupAggregate[]>(`${this.REST_SERVER}${this.GET_GROUPS_BY_ID}${id}`);
   }
-  public saveGroupAggregate(group: GroupAggregate, file: File): Observable<GroupAggregate>
+  public saveGroupAggregate(group: GroupAggregate, file: File): Observable<any>
   {
     const formData = new FormData();
     // formData.append('groupAggregate', JSON.stringify(group));
     formData.append('fille', file);
-    return this.httpClient.post<GroupAggregate>(`${this.REST_SERVER}${'/fille'}`, formData);
+    return this.httpClient.post<any>(`${this.REST_SERVER}`, formData);
     // return this.httpClient.post<GroupAggregate>(`${this.REST_SERVER}`, group);
   }
 }
