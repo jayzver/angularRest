@@ -7,7 +7,7 @@ import {CreateGroupAggregateComponent} from './components/group-aggregate/create
 
 const routes: Routes =
   [
-    {path: 'group_aggregate_by_parent_id/:id/:name', component: GroupAggregateViewComponent},
+    {path: 'group_aggregate_by_parent_id/:parentId/:name', component: GroupAggregateViewComponent},
     {path: 'group_aggregate_by_parent_id', component: GroupAggregateViewComponent},
     {path: 'create_group_aggregate/:parentId', component: CreateGroupAggregateComponent},
     {path: 'about', component: AboutComponent}

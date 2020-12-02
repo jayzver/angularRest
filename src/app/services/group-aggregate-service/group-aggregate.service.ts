@@ -20,8 +20,8 @@ export class GroupAggregateService
   public saveGroupAggregate(group: GroupAggregate, file: File): Observable<any>
   {
     const formData = new FormData();
-    // formData.append('groupAggregate', JSON.stringify(group));
-    formData.append('fille', file);
+    formData.append('file', file);
+    formData.append('object', JSON.stringify(group));
     return this.httpClient.post<any>(`${this.REST_SERVER}`, formData);
     // return this.httpClient.post<GroupAggregate>(`${this.REST_SERVER}`, group);
   }

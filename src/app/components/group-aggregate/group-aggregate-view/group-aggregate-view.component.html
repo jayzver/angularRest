@@ -3,13 +3,20 @@
   <div class="content">
     <h2 fxLayoutAlign="center" >{{titlePage}}</h2>
     <div fxLayout="row wrap" fxLayoutGap="25px grid">
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%">
+        <a class="linkGroupTitle" href="javascript:" routerLink="/create_group_aggregate/{{parentId}}">
+          <mat-card appHoverDir fxLayout="column" fxLayoutAlign="center center">
+            <img width="60%" src="assets\imgs\client\imgs\btns\add256.png" style="margin: 10%"/>
+          </mat-card>
+        </a>
+      </div>
       <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%" *ngFor="let group of groups; let i = index">
         <a class="linkGroupTitle" href="javascript:" (click)="onClick($event, group.id)">
           <mat-card appHoverDir>
             <mat-card-header>
               <span class="groupTitle">{{group.nameGroup}}</span>
             </mat-card-header>
-            <img mat-card-image width="100%" height="100%" src="{{ 'assets/imgs/server/groupImages/'+group.imageUrl }}"/>
+            <img mat-card-image src="{{ 'assets/imgs/server/groupImages/'+group.imageUrl }}"/>
           </mat-card>
         </a>
       </div>

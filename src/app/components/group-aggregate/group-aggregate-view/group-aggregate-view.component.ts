@@ -15,6 +15,7 @@ export class GroupAggregateViewComponent implements OnInit, OnDestroy
   private sub: Subscription;
   groups: GroupAggregate[] = [];
   titlePage: string;
+  parentId: number;
 
   constructor(private service: GroupAggregateService, private router: Router, private route: ActivatedRoute)
   {
@@ -24,10 +25,9 @@ export class GroupAggregateViewComponent implements OnInit, OnDestroy
   {
     this.route.params.subscribe(params =>
     {
-      let id;
-      id = (params.id == null) ? 0 : params.id;
+      this.parentId = (params.parentId == null) ? 0 : params.parentId;
       this.titlePage = (params.name == null) ? 'Главная' : params.name;
-      this.sub = this.service.getGroupsByParentId(id).subscribe((data: GroupAggregate[]) =>
+      this.sub = this.service.getGroupsByParentId(this.parentId).subscribe((data: GroupAggregate[]) =>
         {
           console.log(data);
           this.groups = data;
@@ -36,17 +36,16 @@ export class GroupAggregateViewComponent implements OnInit, OnDestroy
     });
   }
 
-  onClick($event: MouseEvent, id: number): void
+  onClick($event: MouseEvent, parentId: number): void
   {
     let group;
-    group = this.groups.find(one => one.id === id);
-    console.log(group.nameGroup);
+    group = this.groups.find(one => one.id === parentId);
     if (group.typeOfChildren === 1)
     {
-      this.router.navigate(['group_aggregate_by_parent_id', id, group.nameGroup]);
+      this.router.navigate(['group_aggregate_by_parent_id', parentId, group.nameGroup]);
     } else if (group.typeOfChildren === 2)
     {
-      this.router.navigate(['aggregates_by_group_id', id]);
+      this.router.navigate(['aggregates_by_group_id', parentId]);
     }
   }
 
