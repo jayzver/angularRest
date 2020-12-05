@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularRest';
+  iconBtnGroupAggregate = 'assets/data/client/imgs/icons/gear.png';
 }

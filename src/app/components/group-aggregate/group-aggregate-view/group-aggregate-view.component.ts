@@ -12,10 +12,12 @@ import {GroupAggregate} from '../../../classes/group-aggregate';
 
 export class GroupAggregateViewComponent implements OnInit, OnDestroy
 {
+  iconBtnAdd = 'assets/data/client/imgs/btns/add256.png';
   private sub: Subscription;
   groups: GroupAggregate[] = [];
   titlePage: string;
   parentId: number;
+  imgPathGroupAggregate = 'assets/data/server/imgs/groupImages/';
 
   constructor(private service: GroupAggregateService, private router: Router, private route: ActivatedRoute)
   {
@@ -42,7 +44,7 @@ export class GroupAggregateViewComponent implements OnInit, OnDestroy
     group = this.groups.find(one => one.id === parentId);
     if (group.typeOfChildren === 1)
     {
-      this.router.navigate(['group_aggregate_by_parent_id', parentId, group.nameGroup]);
+      this.router.navigate(['group_aggregate_by_parent_id', parentId, group.nameTarget]);
     } else if (group.typeOfChildren === 2)
     {
       this.router.navigate(['aggregates_by_group_id', parentId]);

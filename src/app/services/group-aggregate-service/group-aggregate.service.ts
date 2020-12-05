@@ -21,7 +21,7 @@ export class GroupAggregateService
   {
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('object', JSON.stringify(group));
+    formData.append('groupAggregate', JSON.stringify(group));
     return this.httpClient.post<any>(`${this.REST_SERVER}`, formData);
     // return this.httpClient.post<GroupAggregate>(`${this.REST_SERVER}`, group);
   }

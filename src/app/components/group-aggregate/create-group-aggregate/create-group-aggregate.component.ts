@@ -23,12 +23,13 @@ export class CreateGroupAggregateComponent implements OnInit
   {
     this.group.typeOfChildren = 1;
     this.route.params.subscribe(params => {
-      this.group.parentId = (params.parentId == null) ? 0 : params.parent.Id;
+      this.group.parentId = (params.parentId == null) ? 0 : params.parentId;
     });
   }
 
   cancel(): void
   {
+    alert(this.group.description);
   }
 
   send(isValid: boolean): void
@@ -43,6 +44,6 @@ export class CreateGroupAggregateComponent implements OnInit
   inputFile(event): void
   {
     this.file = event.target.files[0];
-    this.group.imageUrl = this.file.name;
+    this.group.imgUrl = this.file.name;
   }
 }

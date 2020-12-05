@@ -1,7 +1,7 @@
 <div class="form" fxFlex="30%" fxFlex.md="40%" fxFlex.sm="60%" fxFlex.xs="100%"
      fxFlexOffset="10%" fxFlexOffset.sm="3%" fxFlexOffset.xs="1%">
   <mat-form-field appearance="outline" class="name">
-    <input [(ngModel)]="group.nameGroup" matInput placeholder="название" required minlength="5" #validator="ngModel">
+    <input [(ngModel)]="group.nameTarget" matInput placeholder="название" required minlength="5" #validator="ngModel">
     <mat-hint>{{nameHint}}</mat-hint>
   </mat-form-field>
   <label style="size: 3em;" id="group_content">Содержимое группы</label>
@@ -14,6 +14,10 @@
       placeholder="Выберите изображение" [accept]="'.jpg, .jpeg, .png'" (input)="inputFile($event)">
     </ngx-mat-file-input>
     <mat-icon matSuffix>folder</mat-icon>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="textArea">
+    <mat-label>Заметки</mat-label>
+    <textarea matInput [(ngModel)]="group.description"></textarea>
   </mat-form-field>
   <div class="controls" fxLayout="row" fxLayoutAlign="end center">
     <button mat-raised-button color="accent" (click)="cancel()">Отменить</button>

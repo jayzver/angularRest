@@ -6,7 +6,7 @@
       <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%">
         <a class="linkGroupTitle" href="javascript:" routerLink="/create_group_aggregate/{{parentId}}">
           <mat-card appHoverDir fxLayout="column" fxLayoutAlign="center center">
-            <img width="60%" src="assets\imgs\client\imgs\btns\add256.png" style="margin: 10%"/>
+            <img width="60%" src="{{iconBtnAdd}}" style="margin: 10%"/>
           </mat-card>
         </a>
       </div>
@@ -14,9 +14,9 @@
         <a class="linkGroupTitle" href="javascript:" (click)="onClick($event, group.id)">
           <mat-card appHoverDir>
             <mat-card-header>
-              <span class="groupTitle">{{group.nameGroup}}</span>
+              <span class="groupTitle">{{group.nameTarget}}</span>
             </mat-card-header>
-            <img mat-card-image src="{{ 'assets/imgs/server/groupImages/'+group.imageUrl }}"/>
+            <img mat-card-image src="{{ imgPathGroupAggregate+group.imgUrl }}"/>
           </mat-card>
         </a>
       </div>
