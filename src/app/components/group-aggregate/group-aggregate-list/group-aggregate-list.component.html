@@ -10,16 +10,7 @@
           </mat-card>
         </a>
       </div>
-      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%" *ngFor="let group of groups; let i = index">
-        <a class="linkGroupTitle" href="javascript:" (click)="onClick($event, group.id)">
-          <mat-card appHoverDir>
-            <mat-card-header>
-              <span class="groupTitle">{{group.nameTarget}}</span>
-            </mat-card-header>
-            <img mat-card-image src="{{ imgPathGroupAggregate+group.imgUrl }}"/>
-          </mat-card>
-        </a>
-      </div>
+      <app-group-aggregate-item *ngFor="let group of groups; let i = index" [group]="group" ></app-group-aggregate-item>
     </div>
   </div>
 </div>

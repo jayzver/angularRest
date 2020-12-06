@@ -1,15 +1,16 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpClientModule, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {GroupAggregate} from '../../classes/group-aggregate';
+import {GroupAggregate} from '../../../classes/group-aggregate';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GroupAggregateService
+export class GroupAggregateRestService
 {
   private REST_SERVER = 'http://localhost:9966/api/v1/group_aggregate/';
   private GET_GROUPS_BY_ID = 'get_groups_by_parent_id/';
+  groups: GroupAggregate[];
   constructor(private httpClient: HttpClient)
   {
   }
