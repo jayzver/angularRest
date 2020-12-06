@@ -27,7 +27,7 @@ export class GroupAggregateCollectionService
     });
     return this.groups;
   }
-  getGroupById(id: number): GroupAggregate
+  findGroupById(id: number): GroupAggregate
   {
     return this.groups.find(one => one.id === id);
   }

@@ -13,7 +13,6 @@ import {GroupAggregateCollectionService} from '../../../services/group-aggregate
 
 export class GroupAggregateListComponent implements OnInit, OnDestroy
 {
-  iconBtnAdd = 'assets/data/client/imgs/btns/add256.png';
   private sub: Subscription;
   titlePage: string;
   parentId: number;
@@ -27,6 +26,7 @@ export class GroupAggregateListComponent implements OnInit, OnDestroy
     this.route.params.subscribe(params =>
     {
       this.parentId = (params.parentId == null) ? 0 : params.parentId;
+      this.groups.getGroupsByParentId(this.parentId);
       this.titlePage = (params.name == null) ? 'Главная' : params.name;
     });
   }

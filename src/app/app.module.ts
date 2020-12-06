@@ -23,6 +23,7 @@ import { CreateGroupAggregateComponent } from './components/group-aggregate/crea
 import { AggregateViewComponent } from './components/aggregate/aggregate-view/aggregate-view.component';
 import { GroupAggregateItemComponent } from './components/group-aggregate/group-aggregate-item/group-aggregate-item.component';
 import { MenuGroupAggregateItemComponent } from './components/menu/menu-group-aggregate-item/menu-group-aggregate-item.component';
+import { AddNewElementComponent } from './components/add-new-element/add-new-element.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MenuGroupAggregateItemComponent } from './components/menu/menu-group-ag
     CreateGroupAggregateComponent,
     AggregateViewComponent,
     GroupAggregateItemComponent,
-    MenuGroupAggregateItemComponent
+    MenuGroupAggregateItemComponent,
+    AddNewElementComponent
   ],
   imports: [
     BrowserModule,

@@ -1,16 +1,10 @@
 <div style="padding: 13px;">
-  <mat-spinner *ngIf="groups.length === 0"></mat-spinner>
+  <mat-spinner *ngIf="groups.getGroups.length === 0"></mat-spinner>
   <div class="content">
-    <h2 fxLayoutAlign="center" >{{titlePage}}</h2>
+    <h2 fxLayoutAlign="center">{{titlePage}}</h2>
     <div fxLayout="row wrap" fxLayoutGap="25px grid">
-      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%">
-        <a class="linkGroupTitle" href="javascript:" routerLink="/create_group_aggregate/{{parentId}}">
-          <mat-card appHoverDir fxLayout="column" fxLayoutAlign="center center">
-            <img width="60%" src="{{iconBtnAdd}}" style="margin: 10%"/>
-          </mat-card>
-        </a>
-      </div>
-      <app-group-aggregate-item *ngFor="let group of groups; let i = index" [group]="group" ></app-group-aggregate-item>
+      <app-add-new-element [parentId]="parentId"></app-add-new-element>
+      <app-group-aggregate-item *ngFor="let group of groups.getGroups; let i = index" [group]="group" ></app-group-aggregate-item>
     </div>
   </div>
 </div>
