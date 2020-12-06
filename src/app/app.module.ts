@@ -16,20 +16,24 @@ import {MaterialFileInputModule} from 'ngx-material-file-input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/component/app.component';
-import { GroupAggregateViewComponent} from './components/group-aggregate/group-aggregate-view/group-aggregate-view.component';
+import { GroupAggregateListComponent} from './components/group-aggregate/group-aggregate-list/group-aggregate-list.component';
 import { AboutComponent } from './components/about/about.component';
 import { HoverDirective } from './directives/hover/hover.directive';
 import { CreateGroupAggregateComponent } from './components/group-aggregate/create-group-aggregate/create-group-aggregate.component';
 import { AggregateViewComponent } from './components/aggregate/aggregate-view/aggregate-view.component';
+import { GroupAggregateItemComponent } from './components/group-aggregate/group-aggregate-item/group-aggregate-item.component';
+import { MenuGroupAggregateItemComponent } from './components/menu/menu-group-aggregate-item/menu-group-aggregate-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GroupAggregateViewComponent,
+    GroupAggregateListComponent,
     AboutComponent,
     HoverDirective,
     CreateGroupAggregateComponent,
-    AggregateViewComponent
+    AggregateViewComponent,
+    GroupAggregateItemComponent,
+    MenuGroupAggregateItemComponent
   ],
   imports: [
     BrowserModule,

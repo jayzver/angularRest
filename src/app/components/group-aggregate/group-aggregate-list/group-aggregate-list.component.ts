@@ -6,11 +6,11 @@ import {GroupAggregate} from '../../../classes/group-aggregate';
 
 @Component({
   selector: 'app-group-aggregate',
-  templateUrl: './group-aggregate-view.component.html',
-  styleUrls: ['./group-aggregate-view.component.css']
+  templateUrl: './group-aggregate-list.component.html',
+  styleUrls: ['./group-aggregate-list.component.css']
 })
 
-export class GroupAggregateViewComponent implements OnInit, OnDestroy
+export class GroupAggregateListComponent implements OnInit, OnDestroy
 {
   iconBtnAdd = 'assets/data/client/imgs/btns/add256.png';
   private sub: Subscription;
