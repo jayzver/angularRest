@@ -1,9 +1,9 @@
 export class GroupAggregate
 {
   id: number;
-  nameGroup: string;
-  imageUrl: string;
+  nameTarget: string;
+  imgUrl: string;
+  description: string;
   parentId: number;
-  hasGroup: number;
-  hasAggregate: number;
+  typeOfChildren: number;
 }

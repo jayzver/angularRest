@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {GroupAggregate} from '../../classes/group-aggregate';
 
@@ -10,7 +10,6 @@ export class GroupAggregateService
 {
   private REST_SERVER = 'http://localhost:9966/api/v1/group_aggregate/';
   private GET_GROUPS_BY_ID = 'get_groups_by_parent_id/';
-  private SAVE_GROUP = 'save_group_aggregate/';
   constructor(private httpClient: HttpClient)
   {
   }
@@ -18,8 +17,12 @@ export class GroupAggregateService
   {
     return this.httpClient.get<GroupAggregate[]>(`${this.REST_SERVER}${this.GET_GROUPS_BY_ID}${id}`);
   }
-  public saveGroupAggregate(group: GroupAggregate): Observable<GroupAggregate>
+  public saveGroupAggregate(group: GroupAggregate, file: File): Observable<any>
   {
-    return this.httpClient.post<GroupAggregate>(`${this.REST_SERVER}${this.SAVE_GROUP}`, group);
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('groupAggregate', JSON.stringify(group));
+    return this.httpClient.post<any>(`${this.REST_SERVER}`, formData);
+    // return this.httpClient.post<GroupAggregate>(`${this.REST_SERVER}`, group);
   }
 }

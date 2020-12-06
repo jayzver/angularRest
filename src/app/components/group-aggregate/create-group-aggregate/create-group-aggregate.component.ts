@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {GroupAggregate} from '../../../classes/group-aggregate';
+import {GroupAggregateService} from '../../../services/group-aggregate-service/group-aggregate.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-create-group',
@@ -9,15 +11,39 @@ import {GroupAggregate} from '../../../classes/group-aggregate';
 export class CreateGroupAggregateComponent implements OnInit
 {
   group: GroupAggregate = new GroupAggregate();
-  groupContent: string;
   nameHint: string;
+  file: File;
+  validator;
 
-  constructor()
+  constructor(private service: GroupAggregateService, private route: ActivatedRoute)
   {
   }
 
   ngOnInit(): void
   {
+    this.group.typeOfChildren = 1;
+    this.route.params.subscribe(params => {
+      this.group.parentId = (params.parentId == null) ? 0 : params.parentId;
+    });
   }
 
+  cancel(): void
+  {
+    alert(this.group.description);
+  }
+
+  send(isValid: boolean): void
+  {
+    if (isValid)
+    {
+      this.service.saveGroupAggregate(this.group, this.file).subscribe(data =>
+      {console.log(data); });
+    }
+  }
+
+  inputFile(event): void
+  {
+    this.file = event.target.files[0];
+    this.group.imgUrl = this.file.name;
+  }
 }
