@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GroupAggregate} from '../../../classes/group-aggregate';
 import {GroupAggregateRestService} from '../../../services/group-aggregate/group-aggregate-rest/group-aggregate-rest.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {GroupAggregateCollectionService} from "../../../services/group-aggregate/group-aggregate-collection/group-aggregate-collection.service";
 
 @Component({
   selector: 'app-create-group',
@@ -15,7 +16,7 @@ export class CreateGroupAggregateComponent implements OnInit
   file: File;
   validator;
 
-  constructor(private service: GroupAggregateRestService, private route: ActivatedRoute)
+  constructor(private service: GroupAggregateCollectionService, private route: ActivatedRoute, private router: Router)
   {
   }
 
@@ -29,15 +30,18 @@ export class CreateGroupAggregateComponent implements OnInit
 
   cancel(): void
   {
-    alert(this.group.description);
+    window.history.go(-1);
+    // this.router.navigate(['group_aggregate_by_parent_id', 0, 'Главная']);
   }
 
   send(isValid: boolean): void
   {
     if (isValid)
     {
-      this.service.saveGroupAggregate(this.group, this.file).subscribe(data =>
-      {console.log(data); });
+      this.service.saveGroupAggregate(this.group, this.file);
+      let desired: GroupAggregate;
+      desired = this.service.getGroups.find(one => one.id === this.group.parentId);
+      this.router.navigate(['group_aggregate_by_parent_id', desired.id, desired.nameTarget]);
     }
   }
 

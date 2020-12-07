@@ -27,6 +27,12 @@ export class GroupAggregateCollectionService
     }, error => console.log(error));
     return this.groups;
   }
+  saveGroupAggregate(group: GroupAggregate, file: File): void
+  {
+    this.gats.saveGroupAggregate(group, file).subscribe(data => {
+      console.log(data);
+    });
+  }
   findGroupById(id: number): GroupAggregate
   {
     return this.groups.find(one => one.id === id);
