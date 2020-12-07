@@ -12,4 +12,8 @@ export class MenuGroupAggregateItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  menuClick($event: MouseEvent): void
+  {
+    $event.stopPropagation();
+  }
 }

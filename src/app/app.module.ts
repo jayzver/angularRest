@@ -13,6 +13,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatRadioModule} from "@angular/material/radio";
 import {FormsModule} from "@angular/forms";
 import {MaterialFileInputModule} from 'ngx-material-file-input';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/component/app.component';
@@ -53,6 +54,7 @@ import { AddNewElementComponent } from './components/add-new-element/add-new-ele
     MatRadioModule,
     FormsModule,
     MaterialFileInputModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

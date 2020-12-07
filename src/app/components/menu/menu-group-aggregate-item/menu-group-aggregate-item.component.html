@@ -1,1 +1,23 @@
-<p>menu-group-aggregate-item works!</p>
+<div class="menu-container">
+  <button mat-icon-button [matMenuTriggerFor]="menu" (click)="menuClick($event)">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu>
+    <button mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>редактировать</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon></mat-icon>
+      <span>переместить</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>delete</mat-icon>
+      <span>удалить</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>info</mat-icon>
+      <span>описание</span>
+    </button>
+  </mat-menu>
+</div>
