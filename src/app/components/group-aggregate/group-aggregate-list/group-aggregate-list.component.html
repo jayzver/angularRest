@@ -1,10 +1,13 @@
 <div style="padding: 13px;">
-  <mat-spinner *ngIf="groups.getGroups.length === 0"></mat-spinner>
   <div class="content">
     <h2 fxLayoutAlign="center">{{titlePage}}</h2>
     <div fxLayout="row wrap" fxLayoutGap="25px grid">
-      <app-add-new-element [parentId]="parentId"></app-add-new-element>
-      <app-group-aggregate-item *ngFor="let group of groups.getGroups; let i = index" [group]="group" ></app-group-aggregate-item>
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%">
+        <app-add-new-element [parentId]="parentId"></app-add-new-element>
+      </div>
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%" *ngFor="let group of groups.getGroups; let i = index">
+        <app-group-aggregate-item [group]="group"></app-group-aggregate-item>
+      </div>
     </div>
   </div>
 </div>
