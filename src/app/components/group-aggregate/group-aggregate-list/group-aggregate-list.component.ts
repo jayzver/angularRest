@@ -33,6 +33,5 @@ export class GroupAggregateListComponent implements OnInit, OnDestroy
 
   ngOnDestroy(): void
   {
-    this.sub.unsubscribe();
   }
 }
