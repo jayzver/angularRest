@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GroupAggregate} from '../../../classes/group-aggregate';
-import {GroupAggregateService} from '../../../services/group-aggregate-service/group-aggregate.service';
+import {GroupAggregateRestService} from '../../../services/group-aggregate/group-aggregate-rest/group-aggregate-rest.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ export class CreateGroupAggregateComponent implements OnInit
   file: File;
   validator;
 
-  constructor(private service: GroupAggregateService, private route: ActivatedRoute)
+  constructor(private service: GroupAggregateRestService, private route: ActivatedRoute)
   {
   }
 
