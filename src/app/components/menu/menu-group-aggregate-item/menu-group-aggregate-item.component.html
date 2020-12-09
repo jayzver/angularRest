@@ -3,19 +3,19 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="edit()">
       <mat-icon>edit</mat-icon>
       <span>редактировать</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="redirect()">
       <mat-icon></mat-icon>
       <span>переместить</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="delete()">
       <mat-icon>delete</mat-icon>
       <span>удалить</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="info()">
       <mat-icon>info</mat-icon>
       <span>описание</span>
     </button>

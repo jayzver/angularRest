@@ -28,5 +28,31 @@ export class GroupAggregateItemComponent implements OnInit
       this.router.navigate(['aggregates_by_group_id', this.group.id]);
     }
   }
-
+  getMessage(message: string): void
+  {
+    switch (message)
+    {
+      case 'edit':
+      {
+        console.log('edit');
+        this.router.navigate(['create_group_aggregate', 'edit', this.group.id]);
+      }
+      break;
+      case 'delete':
+      {
+        console.log('delete');
+      }
+      break;
+      case 'info':
+      {
+        console.log('info');
+      }
+      break;
+      case 'redirect':
+      {
+        console.log('redirect');
+      }
+      break;
+    }
+  }
 }

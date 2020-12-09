@@ -19,6 +19,7 @@ export class GroupAggregateCollectionService
     }
     return this.groups;
   }
+
   getGroupsByParentId(parentId: number): GroupAggregate[]
   {
     this.gats.getGroupsByParentId(parentId).subscribe((data: GroupAggregate[]) =>
@@ -27,14 +28,26 @@ export class GroupAggregateCollectionService
     }, error => console.log(error));
     return this.groups;
   }
+
+  findGroupById(id: number): GroupAggregate
+  {
+    if (this.groups != null && this.groups.length > 0)
+    {
+      return this.groups.find(one => one.id == id);
+    }
+    return null;
+  }
+
   saveGroupAggregate(group: GroupAggregate, file: File): void
   {
-    this.gats.saveGroupAggregate(group, file).subscribe(data => {
+    this.gats.saveGroupAggregate(group, file).subscribe(data =>
+    {
       console.log(data);
     });
   }
-  findGroupById(id: number): GroupAggregate
+
+  updateGroupAggregate(group: GroupAggregate, file: File): void
   {
-    return this.groups.find(one => one.id === id);
+    this.gats.updateGroupAggregate(group, file);
   }
 }

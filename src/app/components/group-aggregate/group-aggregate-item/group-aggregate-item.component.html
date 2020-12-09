@@ -1,6 +1,6 @@
   <a class="linkGroupTitle" href="javascript:" (click)="onClick()">
     <div>
-      <app-menu-group-aggregate-item></app-menu-group-aggregate-item>
+      <app-menu-group-aggregate-item (msg)="getMessage($event)"></app-menu-group-aggregate-item>
       <mat-card appHoverDir>
         <mat-card-header>
           <span class="groupTitle">{{group.nameTarget}}</span>

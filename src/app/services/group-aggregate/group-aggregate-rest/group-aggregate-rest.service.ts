@@ -26,4 +26,12 @@ export class GroupAggregateRestService
     return this.httpClient.post<any>(`${this.REST_SERVER}`, formData);
     // return this.httpClient.post<GroupAggregate>(`${this.REST_SERVER}`, group);
   }
+
+  updateGroupAggregate(group: GroupAggregate, file: File): Observable<GroupAggregate>
+  {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('groupAggregate', JSON.stringify(group));
+    return this.httpClient.put<GroupAggregate>(`${this.REST_SERVER}`, formData);
+  }
 }

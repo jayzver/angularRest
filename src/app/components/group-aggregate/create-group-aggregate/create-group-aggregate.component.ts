@@ -1,8 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GroupAggregate} from '../../../classes/group-aggregate';
-import {GroupAggregateRestService} from '../../../services/group-aggregate/group-aggregate-rest/group-aggregate-rest.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {GroupAggregateCollectionService} from "../../../services/group-aggregate/group-aggregate-collection/group-aggregate-collection.service";
+import {GroupAggregateCollectionService} from '../../../services/group-aggregate/group-aggregate-collection/group-aggregate-collection.service';
 
 @Component({
   selector: 'app-create-group',
@@ -11,8 +10,9 @@ import {GroupAggregateCollectionService} from "../../../services/group-aggregate
 })
 export class CreateGroupAggregateComponent implements OnInit
 {
-  group: GroupAggregate = new GroupAggregate();
+  group: GroupAggregate;
   nameHint: string;
+  action: string;
   file: File;
   validator;
 
@@ -20,13 +20,27 @@ export class CreateGroupAggregateComponent implements OnInit
   {
   }
 
-  ngOnInit(): void
+ngOnInit(): void
+{
+  this.route.params.subscribe(params =>
   {
-    this.group.typeOfChildren = 1;
-    this.route.params.subscribe(params => {
-      this.group.parentId = (params.parentId == null) ? 0 : params.parentId;
-    });
-  }
+    this.action = params.action;
+    let id;
+    id = (params.id != null) ? params.id : 0;
+    if (this.action === 'edit')
+    {
+      this.group = this.service.findGroupById(id);
+    } else if (this.action === 'create')
+    {
+      this.group = new GroupAggregate();
+      this.group.parentId = id;
+      this.group.typeOfChildren = 1;
+    } else
+    {
+      this.router.navigate(['group_aggregate_by_parent_id', 0, 'Главная']);
+    }
+  });
+}
 
   cancel(): void
   {
@@ -38,11 +52,18 @@ export class CreateGroupAggregateComponent implements OnInit
   {
     if (isValid)
     {
-      this.service.saveGroupAggregate(this.group, this.file);
-      let desired: GroupAggregate;
-      desired = this.service.getGroups.find(one => one.id === this.group.parentId);
-      this.router.navigate(['group_aggregate_by_parent_id', desired.id, desired.nameTarget]);
+      if (this.action === 'create')
+      {
+        this.service.saveGroupAggregate(this.group, this.file);
+      } else
+      {
+        this.service.updateGroupAggregate(this.group, this.file);
+      }
     }
+    let desired: GroupAggregate;
+    desired = this.service.findGroupById(this.group.parentId);
+    this.router.navigate(['group_aggregate_by_parent_id', desired.id, desired.nameTarget]);
+
   }
 
   inputFile(event): void
