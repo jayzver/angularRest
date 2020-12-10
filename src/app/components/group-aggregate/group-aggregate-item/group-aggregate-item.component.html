@@ -5,7 +5,10 @@
         <mat-card-header>
           <span class="groupTitle">{{group.nameTarget}}</span>
         </mat-card-header>
-        <img mat-card-image src="{{ imgPathGroupAggregate+group.imgUrl }}"/>
+        <img mat-card-image src="{{ imgPathGroupAggregate+group.imgUrl }}" />
+        <mat-card-content *ngIf="isVisible" (click)="isVisible = false">
+          <p>{{group.description}}</p>
+        </mat-card-content>
       </mat-card>
     </div>
   </a>

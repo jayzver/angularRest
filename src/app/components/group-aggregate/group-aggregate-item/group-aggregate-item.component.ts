@@ -11,6 +11,7 @@ export class GroupAggregateItemComponent implements OnInit
 {
   @Input() group = new GroupAggregate();
   imgPathGroupAggregate = 'assets/data/server/imgs/groupImages/';
+  isVisible = false;
   constructor(private router: Router)
   {}
 
@@ -46,6 +47,7 @@ export class GroupAggregateItemComponent implements OnInit
       case 'info':
       {
         console.log('info');
+        this.isVisible = !this.isVisible;
       }
       break;
       case 'redirect':

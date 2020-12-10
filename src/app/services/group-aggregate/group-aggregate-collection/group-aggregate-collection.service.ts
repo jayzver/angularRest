@@ -13,7 +13,7 @@ export class GroupAggregateCollectionService
 
   get getGroups(): GroupAggregate[]
   {
-    if (this.groups == null)
+    if (this.groups === null)
     {
       return this.getGroupsByParentId(0);
     }
@@ -25,6 +25,7 @@ export class GroupAggregateCollectionService
     this.gats.getGroupsByParentId(parentId).subscribe((data: GroupAggregate[]) =>
     {
       this.groups = data;
+      console.log(data);
     }, error => console.log(error));
     return this.groups;
   }
