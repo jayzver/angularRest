@@ -10,7 +10,7 @@ export class GroupAggregateCollectionService
   private groups: GroupAggregate[];
   currGroupCopy = new GroupAggregate();
 
-  constructor(private gats: GroupAggregateRestService) {}
+  constructor(private restService: GroupAggregateRestService) {}
 
   get getGroups(): GroupAggregate[]
   {
@@ -23,7 +23,13 @@ export class GroupAggregateCollectionService
 
   getByParentId(parentId: number): GroupAggregate[]
   {
-    this.gats.getByParentId(parentId).subscribe((data: GroupAggregate[]) =>
+    console.log(this.currGroupCopy);
+    if (parentId === undefined)
+    {
+      this.resetCurrGroup();
+      parentId = 0;
+    }
+    this.restService.getByParentId(parentId).subscribe((data: GroupAggregate[]) =>
     {
       this.groups = data;
       console.log(data);
@@ -42,7 +48,7 @@ export class GroupAggregateCollectionService
 
   save(group: GroupAggregate, file: File): void
   {
-    this.gats.save(group, file).subscribe(data =>
+    this.restService.save(group, file).subscribe(data =>
     {
       console.log(data);
     });
@@ -50,12 +56,12 @@ export class GroupAggregateCollectionService
 
   update(group: GroupAggregate, file: File): void
   {
-    this.gats.update(group, file);
+    this.restService.update(group, file).subscribe();
   }
   delete(id: number): void
   {
     let group;
-    group = this.gats.delete(id);
+    group = this.restService.delete(id).subscribe();
     if (group != null)
     {
       this.groups = this.groups.filter(one => one.id != id);

@@ -37,8 +37,6 @@ export class GroupAggregateRestService
 
   delete(id: number): Observable<GroupAggregate>
   {
-    console.log('delete request: ' + this.REST_SERVER + id);
-    // let request = new HttpRequest('DELETE');
     return this.httpClient.delete<GroupAggregate>(`${this.REST_SERVER}${id}`);
   }
 }

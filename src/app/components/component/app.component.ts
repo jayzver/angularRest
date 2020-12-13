@@ -17,6 +17,6 @@ export class AppComponent implements OnInit
   getStartList(): void
   {
     this.groups.resetCurrGroup();
-    this.router.navigate(['group_aggregate']);
+    this.router.navigate(['group_aggregate_one']);
   }
 }

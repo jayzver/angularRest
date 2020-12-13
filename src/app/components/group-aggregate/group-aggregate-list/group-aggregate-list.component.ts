@@ -11,14 +11,15 @@ import {GroupAggregateCollectionService} from '../../../services/group-aggregate
 
 export class GroupAggregateListComponent implements OnInit, OnDestroy
 {
-  constructor(public groups: GroupAggregateCollectionService)
+  constructor(public groups: GroupAggregateCollectionService, private route: ActivatedRoute)
   {
-    console.log(this.groups.currGroupCopy);
   }
 
   ngOnInit(): void
   {
-    this.groups.getByParentId(this.groups.currGroupCopy.id);
+    this.route.params.subscribe((params) => {
+      this.groups.getByParentId(this.groups.currGroupCopy.id);
+    });
   }
 
   ngOnDestroy(): void
