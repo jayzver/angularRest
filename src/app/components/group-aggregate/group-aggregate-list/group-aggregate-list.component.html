@@ -1,9 +1,9 @@
 <div style="padding: 13px;">
   <div class="content">
-    <h2 fxLayoutAlign="center">{{titlePage}}</h2>
+    <h2 fxLayoutAlign="center">{{groups.currGroupCopy.nameTarget}}</h2>
     <div fxLayout="row wrap" fxLayoutGap="25px grid">
       <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%">
-        <app-add-new-element [parentId]="parentId"></app-add-new-element>
+        <app-add-new-element></app-add-new-element>
       </div>
       <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%" *ngFor="let group of groups.getGroups; let i = index">
         <app-group-aggregate-item [group]="group"></app-group-aggregate-item>

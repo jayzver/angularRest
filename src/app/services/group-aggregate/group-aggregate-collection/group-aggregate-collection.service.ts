@@ -8,6 +8,7 @@ import {GroupAggregateRestService} from '../group-aggregate-rest/group-aggregate
 export class GroupAggregateCollectionService
 {
   private groups: GroupAggregate[];
+  currGroupCopy = new GroupAggregate();
 
   constructor(private gats: GroupAggregateRestService) {}
 
@@ -15,14 +16,14 @@ export class GroupAggregateCollectionService
   {
     if (this.groups === null)
     {
-      return this.getGroupsByParentId(0);
+      return this.getByParentId(0);
     }
     return this.groups;
   }
 
-  getGroupsByParentId(parentId: number): GroupAggregate[]
+  getByParentId(parentId: number): GroupAggregate[]
   {
-    this.gats.getGroupsByParentId(parentId).subscribe((data: GroupAggregate[]) =>
+    this.gats.getByParentId(parentId).subscribe((data: GroupAggregate[]) =>
     {
       this.groups = data;
       console.log(data);
@@ -30,7 +31,7 @@ export class GroupAggregateCollectionService
     return this.groups;
   }
 
-  findGroupById(id: number): GroupAggregate
+  findById(id: number): GroupAggregate
   {
     if (this.groups != null && this.groups.length > 0)
     {
@@ -39,16 +40,33 @@ export class GroupAggregateCollectionService
     return null;
   }
 
-  saveGroupAggregate(group: GroupAggregate, file: File): void
+  save(group: GroupAggregate, file: File): void
   {
-    this.gats.saveGroupAggregate(group, file).subscribe(data =>
+    this.gats.save(group, file).subscribe(data =>
     {
       console.log(data);
     });
   }
 
-  updateGroupAggregate(group: GroupAggregate, file: File): void
+  update(group: GroupAggregate, file: File): void
   {
-    this.gats.updateGroupAggregate(group, file);
+    this.gats.update(group, file);
+  }
+  delete(id: number): void
+  {
+    let group;
+    group = this.gats.delete(id);
+    if (group != null)
+    {
+      this.groups = this.groups.filter(one => one.id != id);
+    }
+  }
+
+  resetCurrGroup(): void
+  {
+    this.currGroupCopy.nameTarget = 'Главная';
+    this.currGroupCopy.imgUrl = this.currGroupCopy.description = '';
+    this.currGroupCopy.id = this.currGroupCopy.parentId = 0;
+    this.currGroupCopy.typeOfChildren = 1;
   }
 }

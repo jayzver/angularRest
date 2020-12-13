@@ -6,7 +6,7 @@
           <span class="groupTitle">{{group.nameTarget}}</span>
         </mat-card-header>
         <img mat-card-image src="{{ imgPathGroupAggregate+group.imgUrl }}" />
-        <mat-card-content *ngIf="isVisible" (click)="isVisible = false">
+        <mat-card-content *ngIf="isInfo">
           <p>{{group.description}}</p>
         </mat-card-content>
       </mat-card>

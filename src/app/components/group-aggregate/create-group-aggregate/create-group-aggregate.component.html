@@ -5,7 +5,7 @@
     <mat-hint>{{nameHint}}</mat-hint>
   </mat-form-field>
   <label style="size: 3em;" id="group_content">Содержимое группы</label>
-  <mat-radio-group aria-labelledby="group_content" class="rbg" [(ngModel)]="group.typeOfChildren">
+  <mat-radio-group aria-labelledby="group_content" class="rbg" [(ngModel)]="group.typeOfChildren" [disabled]="action === 'edit'">
     <mat-radio-button class="rb" [value]="1">Группы</mat-radio-button>
     <mat-radio-button class="rb" [value]="2">Агрегаты</mat-radio-button>
   </mat-radio-group>

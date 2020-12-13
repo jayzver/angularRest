@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {GroupAggregate} from '../../../classes/group-aggregate';
 import {Router} from '@angular/router';
+import {GroupAggregateCollectionService} from '../../../services/group-aggregate/group-aggregate-collection/group-aggregate-collection.service';
 
 @Component({
   selector: 'app-group-aggregate-item',
@@ -11,22 +12,21 @@ export class GroupAggregateItemComponent implements OnInit
 {
   @Input() group = new GroupAggregate();
   imgPathGroupAggregate = 'assets/data/server/imgs/groupImages/';
-  isVisible = false;
-  constructor(private router: Router)
+  isInfo = false;
+  constructor(private router: Router, private groups: GroupAggregateCollectionService)
   {}
 
-  ngOnInit(): void
-  {
-  }
+  ngOnInit(): void {}
 
   onClick(): void
   {
     if (this.group.typeOfChildren === 1)
     {
-      this.router.navigate(['group_aggregate_by_parent_id', this.group.id, this.group.nameTarget]);
+      this.groups.currGroupCopy.clone(this.group);
+      this.router.navigate(['group_aggregate']);
     } else if (this.group.typeOfChildren === 2)
     {
-      this.router.navigate(['aggregates_by_group_id', this.group.id]);
+      // this.router.navigate(['aggregates_by_group_id', this.group.id]);
     }
   }
   getMessage(message: string): void
@@ -42,12 +42,14 @@ export class GroupAggregateItemComponent implements OnInit
       case 'delete':
       {
         console.log('delete');
+        this.groups.delete(this.group.id);
+        this.router.navigate(['group_aggregate']);
       }
       break;
       case 'info':
       {
         console.log('info');
-        this.isVisible = !this.isVisible;
+        this.isInfo = !this.isInfo;
       }
       break;
       case 'redirect':

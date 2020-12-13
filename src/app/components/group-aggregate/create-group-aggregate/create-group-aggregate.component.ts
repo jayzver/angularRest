@@ -16,7 +16,7 @@ export class CreateGroupAggregateComponent implements OnInit
   file: File;
   validator;
 
-  constructor(private service: GroupAggregateCollectionService, private route: ActivatedRoute, private router: Router)
+  constructor(private groups: GroupAggregateCollectionService, private route: ActivatedRoute, private router: Router)
   {
   }
 
@@ -29,7 +29,7 @@ ngOnInit(): void
     id = (params.id != null) ? params.id : 0;
     if (this.action === 'edit')
     {
-      this.group = this.service.findGroupById(id);
+      this.group = this.groups.findById(id);
     } else if (this.action === 'create')
     {
       this.group = new GroupAggregate();
@@ -37,7 +37,8 @@ ngOnInit(): void
       this.group.typeOfChildren = 1;
     } else
     {
-      this.router.navigate(['group_aggregate_by_parent_id', 0, 'Главная']);
+      this.groups.resetCurrGroup();
+      this.router.navigate(['group_aggregate']);
     }
   });
 }
@@ -54,16 +55,13 @@ ngOnInit(): void
     {
       if (this.action === 'create')
       {
-        this.service.saveGroupAggregate(this.group, this.file);
+        this.groups.save(this.group, this.file);
       } else
       {
-        this.service.updateGroupAggregate(this.group, this.file);
+        this.groups.update(this.group, this.file);
       }
     }
-    let desired: GroupAggregate;
-    desired = this.service.findGroupById(this.group.parentId);
-    this.router.navigate(['group_aggregate_by_parent_id', desired.id, desired.nameTarget]);
-
+    this.router.navigate(['group_aggregate']);
   }
 
   inputFile(event): void
