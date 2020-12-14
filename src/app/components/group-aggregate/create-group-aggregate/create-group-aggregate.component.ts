@@ -14,6 +14,7 @@ export class CreateGroupAggregateComponent implements OnInit
   nameHint: string;
   action: string;
   file: File;
+  f: number;
   validator;
 
   constructor(private groups: GroupAggregateCollectionService, private route: ActivatedRoute, private router: Router)
@@ -37,7 +38,6 @@ ngOnInit(): void
       this.group.typeOfChildren = 1;
     } else
     {
-      this.groups.resetCurrGroup();
       this.router.navigate(['group_aggregate']);
     }
   });
@@ -61,7 +61,7 @@ ngOnInit(): void
         this.groups.update(this.group, this.file);
       }
     }
-    this.router.navigate(['group_aggregate']);
+    this.router.navigate(['group_aggregate', this.groups.parentId, this.groups.parentTitle]);
   }
 
   inputFile(event): void

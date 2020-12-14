@@ -6,10 +6,8 @@ import {CreateGroupAggregateComponent} from './components/group-aggregate/create
 
 const routes: Routes =
   [
-    {path: 'group_aggregate_one/:id', component: GroupAggregateListComponent},
-    {path: 'group_aggregate_two/:id', component: GroupAggregateListComponent},
-    {path: 'group_aggregate_one', component: GroupAggregateListComponent},
-    {path: 'group_aggregate_two', component: GroupAggregateListComponent},
+    {path: 'group_aggregate/:id/:title', component: GroupAggregateListComponent},
+    {path: 'group_aggregate', component: GroupAggregateListComponent},
     {path: 'create_group_aggregate/:action/:id', component: CreateGroupAggregateComponent},
     {path: 'about', component: AboutComponent}
   ];

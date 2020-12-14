@@ -8,7 +8,9 @@ import {GroupAggregateRestService} from '../group-aggregate-rest/group-aggregate
 export class GroupAggregateCollectionService
 {
   private groups: GroupAggregate[];
-  currGroupCopy = new GroupAggregate();
+  // parentGroup = new GroupAggregate();
+  parentId = 0;
+  parentTitle = 'Главная';
 
   constructor(private restService: GroupAggregateRestService) {}
 
@@ -23,10 +25,10 @@ export class GroupAggregateCollectionService
 
   getByParentId(parentId: number): GroupAggregate[]
   {
-    console.log(this.currGroupCopy);
+    // console.log(this.parentGroup);
     if (parentId === undefined)
     {
-      this.resetCurrGroup();
+      // this.resetParentGroup();
       parentId = 0;
     }
     this.restService.getByParentId(parentId).subscribe((data: GroupAggregate[]) =>
@@ -62,17 +64,17 @@ export class GroupAggregateCollectionService
   {
     let group;
     group = this.restService.delete(id).subscribe();
-    if (group != null)
+    if (group !== null && group !== undefined)
     {
       this.groups = this.groups.filter(one => one.id != id);
     }
   }
 
-  resetCurrGroup(): void
-  {
-    this.currGroupCopy.nameTarget = 'Главная';
-    this.currGroupCopy.imgUrl = this.currGroupCopy.description = '';
-    this.currGroupCopy.id = this.currGroupCopy.parentId = 0;
-    this.currGroupCopy.typeOfChildren = 1;
-  }
+  // resetParentGroup(): void
+  // {
+  //   this.parentGroup.nameTarget = 'Главная';
+  //   this.parentGroup.imgUrl = this.parentGroup.description = '';
+  //   this.parentGroup.id = this.parentGroup.parentId = 0;
+  //   this.parentGroup.typeOfChildren = 1;
+  // }
 }
