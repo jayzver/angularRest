@@ -35,7 +35,7 @@ export class GroupAggregateItemComponent implements OnInit
       case 'edit':
       {
         console.log('edit');
-        this.router.navigate(['create_group_aggregate', 'edit', this.groups.parentId, this.groups.parentTitle]);
+        this.router.navigate(['create_group_aggregate', 'edit', this.group.id]);
       }
       break;
       case 'delete':

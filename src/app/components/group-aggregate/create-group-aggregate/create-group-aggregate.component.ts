@@ -21,27 +21,31 @@ export class CreateGroupAggregateComponent implements OnInit
   {
   }
 
-ngOnInit(): void
-{
-  this.route.params.subscribe(params =>
+  ngOnInit(): void
   {
-    this.action = params.action;
-    let id;
-    id = (params.id != null) ? params.id : 0;
-    if (this.action === 'edit')
+    this.route.params.subscribe(params =>
     {
-      this.group = this.groups.findById(id);
-    } else if (this.action === 'create')
+      this.action = params.action;
+      let id;
+      id = (params.id != null) ? params.id : 0;
+      if (this.action === 'edit')
+      {
+        this.group = this.groups.findById(id);
+      } else if (this.action === 'create')
+      {
+        this.group = new GroupAggregate();
+        this.group.parentId = id;
+        this.group.typeOfChildren = 1;
+      } else
+      {
+        this.router.navigate(['group_aggregate', this.groups.parentId, this.groups.parentTitle]);
+      }
+    });
+    if (this.group === null)
     {
-      this.group = new GroupAggregate();
-      this.group.parentId = id;
-      this.group.typeOfChildren = 1;
-    } else
-    {
-      this.router.navigate(['group_aggregate']);
+      this.router.navigate(['group_aggregate', 0, 'Главная']);
     }
-  });
-}
+  }
 
   cancel(): void
   {
@@ -55,13 +59,16 @@ ngOnInit(): void
     {
       if (this.action === 'create')
       {
-        this.groups.save(this.group, this.file);
+        this.groups.save(this.group, this.file, () => {
+          this.router.navigate(['group_aggregate', this.groups.parentId, this.groups.parentTitle]);
+        });
       } else
       {
-        this.groups.update(this.group, this.file);
+        this.groups.update(this.group, this.file, () => {
+          this.router.navigate(['group_aggregate', this.groups.parentId, this.groups.parentTitle]);
+        });
       }
     }
-    this.router.navigate(['group_aggregate', this.groups.parentId, this.groups.parentTitle]);
   }
 
   inputFile(event): void
