@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GroupAggregate} from '../../../classes/group-aggregate';
+import {GroupAggregate} from '../../../classes/GroupAggregate/group-aggregate';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GroupAggregateCollectionService} from '../../../services/group-aggregate/group-aggregate-collection/group-aggregate-collection.service';
 
@@ -10,6 +10,7 @@ import {GroupAggregateCollectionService} from '../../../services/group-aggregate
 })
 export class CreateGroupAggregateComponent implements OnInit
 {
+  parentId: number;
   group: GroupAggregate;
   nameHint: string;
   action: string;
@@ -17,7 +18,7 @@ export class CreateGroupAggregateComponent implements OnInit
   f: number;
   validator;
 
-  constructor(private groups: GroupAggregateCollectionService, private route: ActivatedRoute, private router: Router)
+  constructor(private gacs: GroupAggregateCollectionService, private route: ActivatedRoute, private router: Router)
   {
   }
 
@@ -30,21 +31,21 @@ export class CreateGroupAggregateComponent implements OnInit
       id = (params.id != null) ? params.id : 0;
       if (this.action === 'edit')
       {
-        this.group = this.groups.findById(id);
+        this.group = this.gacs.findById(id);
+        if (this.group === null)
+        {
+          this.router.navigate(['group_aggregate', 0]);
+        }
       } else if (this.action === 'create')
       {
         this.group = new GroupAggregate();
-        this.group.parentId = id;
+        this.parentId = id;
         this.group.typeOfChildren = 1;
       } else
       {
-        this.router.navigate(['group_aggregate', this.groups.parentId, this.groups.parentTitle]);
+        this.callback();
       }
     });
-    if (this.group === null)
-    {
-      this.router.navigate(['group_aggregate', 0, 'Главная']);
-    }
   }
 
   cancel(): void
@@ -53,20 +54,21 @@ export class CreateGroupAggregateComponent implements OnInit
     // this.router.navigate(['group_aggregate_by_parent_id', 0, 'Главная']);
   }
 
+  private callback(): void
+  {
+    this.router.navigate(['group_aggregate', this.gacs._parent.id]);
+  }
+
   send(isValid: boolean): void
   {
     if (isValid)
     {
       if (this.action === 'create')
       {
-        this.groups.save(this.group, this.file, () => {
-          this.router.navigate(['group_aggregate', this.groups.parentId, this.groups.parentTitle]);
-        });
+        this.gacs.save(this.group, this.file, this.parentId, this.callback);
       } else
       {
-        this.groups.update(this.group, this.file, () => {
-          this.router.navigate(['group_aggregate', this.groups.parentId, this.groups.parentTitle]);
-        });
+        this.gacs.update(this.group, this.file, this.callback);
       }
     }
   }
@@ -74,6 +76,5 @@ export class CreateGroupAggregateComponent implements OnInit
   inputFile(event): void
   {
     this.file = event.target.files[0];
-    this.group.imgUrl = this.file.name;
   }
 }

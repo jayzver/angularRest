@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {GroupAggregate} from '../../../classes/group-aggregate';
+import {GroupAggregate} from '../../../classes/GroupAggregate/group-aggregate';
 import {GroupAggregateRestService} from '../group-aggregate-rest/group-aggregate-rest.service';
+import {TransferGroupAggregate} from '../../../classes/GroupAggregate/transfer-group-aggregate';
 
 @Injectable({
   providedIn: 'root'
@@ -8,32 +9,37 @@ import {GroupAggregateRestService} from '../group-aggregate-rest/group-aggregate
 export class GroupAggregateCollectionService
 {
   private groups: GroupAggregate[];
-  // parentGroup = new GroupAggregate();
-  parentId = 0;
-  parentTitle = 'Главная';
+  private parent: GroupAggregate;
 
   constructor(private restService: GroupAggregateRestService) {}
 
-  get getGroups(): GroupAggregate[]
+  get _groups(): GroupAggregate[]
   {
     if (this.groups === null)
     {
-      return this.getByParentId(0);
+      return this.getGroups(0);
     }
     return this.groups;
   }
-
-  getByParentId(parentId: number): GroupAggregate[]
+  get _parent(): GroupAggregate
   {
-    // console.log(this.parentGroup);
+    if (this.parent !== undefined && this.parent !== null)
+    {
+      return this.parent;
+    }
+    return null;
+  }
+
+  getGroups(parentId?: number): GroupAggregate[]
+  {
     if (parentId === undefined)
     {
-      // this.resetParentGroup();
       parentId = 0;
     }
-    this.restService.getByParentId(parentId).subscribe((data: GroupAggregate[]) =>
+    this.restService.get(parentId).subscribe((data: TransferGroupAggregate) =>
     {
-      this.groups = data;
+      this.groups = data.children;
+      this.parent = data.parent;
       console.log(data);
     }, error => console.log(error));
     return this.groups;
@@ -48,9 +54,9 @@ export class GroupAggregateCollectionService
     return null;
   }
 
-  save(group: GroupAggregate, file: File, callback): void
+  save(group: GroupAggregate, file: File, parentId: number, callback): void
   {
-    this.restService.save(group, file).subscribe(data =>
+    this.restService.save(group, parentId, file).subscribe(data =>
     {
       console.log(data);
     }, error => console.log(error),
@@ -75,12 +81,4 @@ export class GroupAggregateCollectionService
       this.groups = this.groups.filter(one => one.id != id);
     }
   }
-
-  // resetParentGroup(): void
-  // {
-  //   this.parentGroup.nameTarget = 'Главная';
-  //   this.parentGroup.imgUrl = this.parentGroup.description = '';
-  //   this.parentGroup.id = this.parentGroup.parentId = 0;
-  //   this.parentGroup.typeOfChildren = 1;
-  // }
 }

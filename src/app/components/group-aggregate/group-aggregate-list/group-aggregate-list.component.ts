@@ -11,9 +11,7 @@ import {GroupAggregateCollectionService} from '../../../services/group-aggregate
 export class GroupAggregateListComponent implements OnInit, OnDestroy
 {
   title: string;
-  constructor(public groups: GroupAggregateCollectionService, private route: ActivatedRoute)
-  {
-  }
+  constructor(public gacs: GroupAggregateCollectionService, private route: ActivatedRoute){}
 
   ngOnInit(): void
   {
@@ -21,14 +19,10 @@ export class GroupAggregateListComponent implements OnInit, OnDestroy
     {
       let id: number;
       id = (params.id !== undefined) ? params.id : 0;
-      this.title = (params.title !== undefined) ? params.title : 'Главная';
-      this.groups.getByParentId(id);
-      this.groups.parentTitle = this.title;
-      this.groups.parentId = id;
+      this.gacs.getGroups(id);
+      this.title = this.gacs._parent?.nameTarget;
     });
   }
 
-  ngOnDestroy(): void
-  {
-  }
+  ngOnDestroy(): void {}
 }

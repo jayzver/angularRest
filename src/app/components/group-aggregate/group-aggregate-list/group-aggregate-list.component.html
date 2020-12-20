@@ -5,7 +5,7 @@
       <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%">
         <app-add-new-element></app-add-new-element>
       </div>
-      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%" *ngFor="let group of groups.getGroups; let i = index">
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%" *ngFor="let group of gacs._groups; let i = index">
         <app-group-aggregate-item [group]="group"></app-group-aggregate-item>
       </div>
     </div>

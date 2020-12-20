@@ -8,12 +8,14 @@ import {GroupAggregateCollectionService} from '../../services/group-aggregate/gr
 })
 export class AddNewElementComponent implements OnInit
 {
+  parentId: number;
   iconBtnAdd = 'assets/data/client/imgs/btns/add256.png';
-  constructor(public groups: GroupAggregateCollectionService)
+  constructor(public gacs: GroupAggregateCollectionService)
   {
   }
 
   ngOnInit(): void
   {
+    this.parentId = this.gacs._parent?.id;
   }
 }
