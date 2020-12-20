@@ -17,7 +17,6 @@ export class GroupAggregateRestService
   }
   public get(id: number): Observable<TransferGroupAggregate>
   {
-    console.log(id);
     if (id != 0)
     {
       return this.httpClient.get<TransferGroupAggregate>(`${this.REST_SERVER}${this.GET_GROUP}${id}`);

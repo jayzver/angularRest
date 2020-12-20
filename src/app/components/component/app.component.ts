@@ -16,6 +16,6 @@ export class AppComponent implements OnInit
   }
   getStartList(): void
   {
-    this.router.navigate(['group_aggregate']);
+    this.router.navigate(['group_aggregate', 0]);
   }
 }
