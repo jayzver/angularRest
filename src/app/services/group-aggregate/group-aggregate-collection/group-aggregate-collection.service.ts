@@ -21,6 +21,7 @@ export class GroupAggregateCollectionService
     }
     return this.groups;
   }
+
   get _parent(): GroupAggregate
   {
     if (this.parent !== undefined && this.parent !== null)
@@ -30,7 +31,7 @@ export class GroupAggregateCollectionService
     return null;
   }
 
-  getGroups(parentId?: number): GroupAggregate[]
+  getGroups(parentId?: number, callback?: any): GroupAggregate[]
   {
     if (parentId === undefined)
     {
@@ -41,7 +42,10 @@ export class GroupAggregateCollectionService
       this.groups = data.children;
       this.parent = data.parent;
       console.log(data);
-    }, error => console.log(error));
+    }, error => console.log(error), () =>
+    {
+      callback(this);
+    });
     return this.groups;
   }
 
@@ -57,21 +61,26 @@ export class GroupAggregateCollectionService
   save(group: GroupAggregate, file: File, parentId: number, callback): void
   {
     this.restService.save(group, parentId, file).subscribe(data =>
-    {
-      console.log(data);
-    }, error => console.log(error),
-      () => callback()
+      {
+        console.log(data);
+      }, error => console.log(error),
+      () =>
+      {
+        callback();
+      }
     );
   }
 
   update(group: GroupAggregate, file: File, callback): void
   {
-    this.restService.update(group, file).subscribe((grp: GroupAggregate) => {
-      console.log('update group: ' + grp);
-    }, error => console.log(error),
+    this.restService.update(group, file).subscribe((grp: GroupAggregate) =>
+      {
+        console.log('update group: ' + grp);
+      }, error => console.log(error),
       () => callback()
     );
   }
+
   delete(id: number): void
   {
     let group;

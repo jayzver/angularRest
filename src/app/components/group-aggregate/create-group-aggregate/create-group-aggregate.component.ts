@@ -54,7 +54,7 @@ export class CreateGroupAggregateComponent implements OnInit
     // this.router.navigate(['group_aggregate_by_parent_id', 0, 'Главная']);
   }
 
-  private callback(): void
+  public callback(): void
   {
     this.router.navigate(['group_aggregate', this.gacs._parent.id]);
   }
@@ -65,10 +65,14 @@ export class CreateGroupAggregateComponent implements OnInit
     {
       if (this.action === 'create')
       {
-        this.gacs.save(this.group, this.file, this.parentId, this.callback);
+        this.gacs.save(this.group, this.file, this.parentId, () => {
+          this.router.navigate(['group_aggregate', this.parentId]);
+        });
       } else
       {
-        this.gacs.update(this.group, this.file, this.callback);
+        this.gacs.update(this.group, this.file, () => {
+          this.router.navigate(['group_aggregate', this.gacs._parent.id]);
+        });
       }
     }
   }

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GroupAggregateCollectionService} from '../../../services/group-aggregate/group-aggregate-collection/group-aggregate-collection.service';
 
@@ -19,8 +19,9 @@ export class GroupAggregateListComponent implements OnInit, OnDestroy
     {
       let id: number;
       id = (params.id !== undefined) ? params.id : 0;
-      this.gacs.getGroups(id);
-      this.title = this.gacs._parent?.nameTarget;
+      this.gacs.getGroups(id, (service: GroupAggregateCollectionService) => {
+        this.title = service._parent.nameTarget;
+      });
     });
   }
 
