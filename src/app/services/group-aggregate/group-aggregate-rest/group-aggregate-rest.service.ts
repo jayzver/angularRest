@@ -10,7 +10,6 @@ import {TransferGroupAggregate} from '../../../classes/GroupAggregate/transfer-g
 export class GroupAggregateRestService
 {
   private REST_SERVER = 'http://localhost:9966/api/v1/group_aggregate/';
-  private GET_GROUP = 'get_group/';
   groups: GroupAggregate[];
   constructor(private httpClient: HttpClient)
   {
@@ -19,9 +18,9 @@ export class GroupAggregateRestService
   {
     if (id != 0)
     {
-      return this.httpClient.get<TransferGroupAggregate>(`${this.REST_SERVER}${this.GET_GROUP}${id}`);
+      return this.httpClient.get<TransferGroupAggregate>(`${this.REST_SERVER}${id}`);
     }
-    return this.httpClient.get<TransferGroupAggregate>(`${this.REST_SERVER}${this.GET_GROUP}`);
+    return this.httpClient.get<TransferGroupAggregate>(`${this.REST_SERVER}`);
   }
   public save(group: GroupAggregate, parentId: number, file: File): Observable<any>
   {
