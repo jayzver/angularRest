@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AggregateService } from './aggregate.service';
+import { AggregateRestService } from './aggregate-rest.service';
 
-describe('AggregateService', () => {
-  let service: AggregateService;
+describe('AggregateRestService', () => {
+  let service: AggregateRestService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AggregateService);
+    service = TestBed.inject(AggregateRestService);
   });
 
   it('should be created', () => {

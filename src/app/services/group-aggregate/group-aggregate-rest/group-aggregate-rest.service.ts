@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpClientModule, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {GroupAggregate} from '../../../classes/GroupAggregate/group-aggregate';
-import {TransferGroupAggregate} from '../../../classes/GroupAggregate/transfer-group-aggregate';
+import {GroupAggregate} from '../../../classes/groupAggregate/group-aggregate';
+import {ProxyGroupAggregate} from '../../../classes/groupAggregate/proxy-group-aggregate';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +14,13 @@ export class GroupAggregateRestService
   constructor(private httpClient: HttpClient)
   {
   }
-  public get(id: number): Observable<TransferGroupAggregate>
+  public get(id: number): Observable<ProxyGroupAggregate>
   {
     if (id != 0)
     {
-      return this.httpClient.get<TransferGroupAggregate>(`${this.REST_SERVER}${id}`);
+      return this.httpClient.get<ProxyGroupAggregate>(`${this.REST_SERVER}${id}`);
     }
-    return this.httpClient.get<TransferGroupAggregate>(`${this.REST_SERVER}`);
+    return this.httpClient.get<ProxyGroupAggregate>(`${this.REST_SERVER}`);
   }
   public save(group: GroupAggregate, parentId: number, file: File): Observable<any>
   {

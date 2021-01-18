@@ -1,12 +1,17 @@
-export class Aggregate
+import {BaseEntity} from '../base-entity';
+import {Provider} from './provider/provider';
+import {AggregateImg} from './aggregateImg/aggregate-img';
+import {AggregateFile} from './aggregateFile/aggregate-file';
+import {AdditionalProperties} from './additionalProperties/additional-properties';
+
+export class Aggregate extends BaseEntity
 {
-  id: number;
-  nameTarget: string;
-  parentId: number;
   groupId: number;
   quantity: number;
-  imgUrl: string;
-  description: string;
   serialKey: string;
-
+  parentId: number;
+  providers: Provider[];
+  images: AggregateImg[];
+  files: AggregateFile[];
+  additionalProperties: AdditionalProperties[];
 }

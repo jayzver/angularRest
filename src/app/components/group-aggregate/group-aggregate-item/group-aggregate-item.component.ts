@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GroupAggregate} from '../../../classes/GroupAggregate/group-aggregate';
+import {GroupAggregate} from '../../../classes/groupAggregate/group-aggregate';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GroupAggregateCollectionService} from '../../../services/group-aggregate/group-aggregate-collection/group-aggregate-collection.service';
 
@@ -25,7 +25,7 @@ export class GroupAggregateItemComponent implements OnInit
       this.router.navigate(['group_aggregate', this.group.id]);
     } else if (this.group.typeOfChildren === 2)
     {
-      // this.router.navigate(['aggregates_by_group_id', this.group.id]);
+      this.router.navigate(['aggregate/children', this.group.id]);
     }
   }
   getMessage(message: string): void

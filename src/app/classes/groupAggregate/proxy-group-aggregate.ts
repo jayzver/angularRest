@@ -1,6 +1,6 @@
 import {GroupAggregate} from './group-aggregate';
 
-export class TransferGroupAggregate
+export class ProxyGroupAggregate
 {
   parent: GroupAggregate;
   children: GroupAggregate[];

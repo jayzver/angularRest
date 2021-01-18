@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {GroupAggregate} from '../../../classes/GroupAggregate/group-aggregate';
+import {GroupAggregate} from '../../../classes/groupAggregate/group-aggregate';
 import {GroupAggregateRestService} from '../group-aggregate-rest/group-aggregate-rest.service';
-import {TransferGroupAggregate} from '../../../classes/GroupAggregate/transfer-group-aggregate';
+import {ProxyGroupAggregate} from '../../../classes/groupAggregate/proxy-group-aggregate';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +37,7 @@ export class GroupAggregateCollectionService
     {
       parentId = 0;
     }
-    this.restService.get(parentId).subscribe((data: TransferGroupAggregate) =>
+    this.restService.get(parentId).subscribe((data: ProxyGroupAggregate) =>
     {
       this.groups = data.children;
       this.parent = data.parent;

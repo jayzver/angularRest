@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GroupAggregate} from '../../../classes/GroupAggregate/group-aggregate';
+import {GroupAggregate} from '../../../classes/groupAggregate/group-aggregate';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GroupAggregateCollectionService} from '../../../services/group-aggregate/group-aggregate-collection/group-aggregate-collection.service';
 

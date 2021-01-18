@@ -1,9 +1,7 @@
-export class GroupAggregate
+import {BaseEntity} from '../base-entity';
+
+export class GroupAggregate extends BaseEntity
 {
-  id: number;
-  nameTarget: string;
-  imgUrl: string;
-  description: string;
   parentId: number;
   typeOfChildren: number;
   clone(group: GroupAggregate): void
