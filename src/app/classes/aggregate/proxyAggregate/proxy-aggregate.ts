@@ -1,2 +1,7 @@
-export class ProxyAggregate {
+import {Aggregate} from "../aggregate";
+
+export class ProxyAggregate
+{
+  parent: Aggregate;
+  children: Aggregate[];
 }

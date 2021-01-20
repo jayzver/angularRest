@@ -11,7 +11,7 @@ export class AggregateRestService {
 
   private REST_SERVER = 'http://localhost:9966/api/v1/aggregate/';
   private CHILDREN_BY_PARENT_ID = 'children/by/';
-  private CHILDREN = 'children';
+  private CHILDREN = 'children/';
   groups: Aggregate[];
   constructor(private httpClient: HttpClient)
   {

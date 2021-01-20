@@ -25,7 +25,7 @@ export class GroupAggregateItemComponent implements OnInit
       this.router.navigate(['group_aggregate', this.group.id]);
     } else if (this.group.typeOfChildren === 2)
     {
-      this.router.navigate(['aggregate/children', this.group.id]);
+      this.router.navigate(['aggregate/children/', 'groupAggregate', this.group.id]);
     }
   }
   getMessage(message: string): void
